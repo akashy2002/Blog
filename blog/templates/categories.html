@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Categories filter{% endblock title %}
+{% load static %}
+{% block body %}
+
+<div class="home-articles max-width-1 m-auto">
+    <h2>Categories</h2>
+    {% if request.user.is_authenticated %}
+    {% for p in cat_data %}
+    <div class="home-article">
+        <div class="article-img">
+            <img src="{% static 'img/lap.jpg' %}" alt="">
+        </div>
+        <div class="article-content">
+            <a href="{{p.slug}}">
+                <h3>{{p.title}}</h3>
+            </a>
+            <div>{{p.text | truncatechars:30}}</div>
+            <span>{{p.date}}</span>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <h3 class="m-auto">Please Login</h3>
+    {% endif %}
+    {% endblock body %}

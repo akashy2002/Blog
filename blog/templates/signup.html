@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}Signup{% endblock title %}
+
+{% block body %}
+<div class="wrapper">
+    {% include "messages.html" %}
+        <div class="card">
+            <div class="bar"></div>
+            <span>Account Create</span>
+            <h2 class="userEmail" id="userId"></h2>
+            <form action="/signup" method="post">
+                {% csrf_token %}
+            <div class="inp-fields">
+                <input type="text" name="username" id="userEmail" placeholder="Username">
+            </div>
+            <div class="inp-fields">
+                <input type="email" name="email" id="userEmail" placeholder="Email address">
+            </div>
+            <div class="inp-fields">
+                <input type="number" name="phone" id="userEmail" placeholder="Phone number">
+            </div>
+            <div class="inp-fields">
+                <input type="password" name="pass1" id="pass" placeholder="Password" >
+            </div>
+                <div class="inp-fields">
+                <input type="password" name="cpass" id="pass" placeholder="Confirm Password" >
+            </div>
+
+            <div class="login">
+                <button class="loginBtn">Signup</button>
+            </div>
+            </form>
+
+        </div>
+    </div>
+    
+{% endblock body %}

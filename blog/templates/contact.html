@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}Contact{% endblock title %}
+
+{% block body %}
+   <div class="max-width-1 m-auto"><hr></div>
+
+
+    <div class="contact-content max-width-1 m-auto">
+        {% for msg in messages %}
+        <span class="alert-msg">{{msg}}</span>
+    {% endfor %}
+        <h1>Contact Us</h1>
+        <form action="/contact" method="post" class="contact-form">
+            {% csrf_token %}
+            <div class="form-box">
+                <input type="text" name="name" placeholder="Enter your name">
+            </div>
+            <div class="form-box">
+                <input type="text" name="email" placeholder="Enter your Email">
+            </div>
+            <div class="form-box">
+                <input type="text" name="phone" placeholder="Enter your Phone">
+            </div>
+            <div class="form-box">
+                <textarea name="msg" id="" cols="30" rows="10" placeholder="Message"></textarea>
+            </div>
+            {% if request.user.is_authenticated %}
+            <div class="form-box">
+                <button type="submit" class="btn">Submit</button>
+            </div>
+            {% else %}
+                <h3 class="m-auto">Please Login</h3>
+            {% endif %}
+        </form>
+    </div>
+{% endblock body %}

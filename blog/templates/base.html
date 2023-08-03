@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/utils.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mobile.css' %}">
+    <link rel="stylesheet" href="{% static 'css/blogpost.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+
+
+
+
+    <title>{% block title %}{% endblock title %}</title>
+</head>
+
+<body>
+
+    <nav class="navigation max-width-1 m-auto">
+        <div class="left"><span><img src="{% static 'img/logo.png' %}" alt="" width="50px"></span>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li>
+                    {% for p in cat %}
+                    <a href="?category={{p.id}}">{{p.title}}</a>
+                    {% endfor %}
+                </li>
+                
+                
+
+            </ul>
+        </div>
+        <div class="right">
+            <form action="/search"  method="get">
+                <input type="text" class="fm" name="search" placeholder="Search here" required="">
+                <button class="btn">Search</button>
+                 {% if request.user.is_authenticated %}
+                <a  class="btn" href="/logout">Logout</a>
+                {% else %}
+                <a class="btn"  href="/signup">Signup</a>
+                  <a  class="btn" href="/login">Login</a>
+                {% endif %}
+            </form>
+        </div>
+    </nav>
+     
+
+{% block body %}{% endblock body %}
+        
+    <div class="footer max-width-1 m-auto">
+        <p> Copyright &copy 2023: iBlog.com</p>
+       <a href="https:/www.akki'siblob.com/free-iblog">akki'sblog.com</a>
+    </div>
+
+    <script src="{% static 'js/login.js' %}"></script>
+
+</body>
+
+</html>

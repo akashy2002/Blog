@@ -1,0 +1,58 @@
+:root {
+    --main-bg-color: #ff5e13;
+    --main-text-color: grey;
+    --main-font-family: cursive
+}
+
+.max-width-1 {
+    max-width: 80vw;
+}
+
+.max-width-2 {
+    max-width: 60vw;
+}
+
+.m-auto {
+    margin: auto;
+}
+
+.fm {
+    width: 50%;
+    padding: 3px 5px;
+    font-size: 16px;
+    border: 2px solid black;
+    border-radius: 4px;
+    margin: 0px 10px;
+}
+
+.btn {
+    padding: 4px 10px;
+    border: 2px solid black;
+    border-radius: 4px;
+    font-size: 16;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+    font-family: var(--main-font-family);
+    background: var(--main-bg-color);
+    color: white;
+}
+
+.mar-2 {
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
+
+.btn:hover {
+    border: 2px solid var(--main-bg-color);
+    background-color: white;
+    color: var(--main-bg-color);
+}
+
+.form-box input,
+textarea {
+    width: 52vw;
+    padding: 10px 7px;
+    margin: 8px 0;
+    border-radius: 5px;
+    border: 2px solid var(--main-bg-color);
+}

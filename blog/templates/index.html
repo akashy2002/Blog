@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock title %}
+{% load static %}
+{% block body %}
+
+
+ <div class="max-width-1 m-auto">
+        <hr>
+    </div>
+    {% include "messages.html" %}
+    <div class="content max-width-1 m-auto mar-2">
+        <div class="content-left">
+            <h1>The heaven for bloggers</h1>
+            <p>iBlog is a website which lets you submit an article which upon approvel
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis nihil consectetur placeat, libero iure
+                fuga deserunt nemo eaque voluptatum minima quo repellendus porro ipsa laborum blanditiis hic
+                necessitatibus beatae facilis perferendis. Nam, facilis? Dolorem quisquam similique voluptates, fuga
+                inventore quibusdam doloremque blanditiis assumenda, molestias cum hic ab et? Voluptates, dignissimos?
+            </p>
+        </div>
+        <div class="content-right">
+            <img src="{% static 'img/a.webp' %}" alt="iBlog">
+        </div>
+    </div>
+    <div class="max-width-1 m-auto"><hr></div>
+    <h2 class="max-width-1 m-auto mar-2">Recently uploaded articles</h2>
+   <div class="row">
+       {% for p in post %}
+       {% if forloop.counter < 4 %}
+        <div class="home-article more-post">
+            <div class="article-img">
+                <img src="{{p.image.url}}" alt="">
+            </div>
+            <div class="article-content">
+                <a href="{{p.slug}}">
+                    <h3>{{p.title}}</h3>
+                </a>
+                <div>{{p.text | truncatechars:30}}</div>
+                <span>{{p.date}}</span>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        
+        </div>
+        </div>
+
+        
+
+
+    <div class="max-width-1 m-auto"><hr></div>
+
+
+
+    <div class="home-articles max-width-1 m-auto">
+        <h2>Featured Articles</h2>
+        {% for p in allpost %}
+         <div class="home-article">
+            <div class="article-img">
+                <img  src="{{p.image.url}}" alt="">
+            </div>
+            <div class="article-content">
+                <a href="{{p.slug}}">
+                <h3>{{p.title}}</h3>
+                </a>
+                <div>{{p.text | truncatechars:35}}</div>
+                <span>{{p.date}}</span>
+            </div>
+        </div>
+        
+        {% endfor %}
+
+      
+{% endblock body %}

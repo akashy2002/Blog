@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% block title %}Blog Posts{% endblock title %}
+{% load static %}
+{% block body %}
+  <div class="max-width-1 m-auto">
+        <hr>
+    </div>
+    {% if request.user.is_authenticated %}
+    {% for p in Bpost %}
+    <div class="post-img max-width-1 m-auto">
+        <img src="{{p.image.url}}" alt="">
+    </div>
+    <div class="m-auto blog-post-content max-width-1 mar-2">
+        <h1>{{p.category.title}}</h1>
+        <div class="blogger-meta">
+            <div class="author-info">Author - Akash <div>{{p.date}}</div></div>
+            <!-- <div class="social-media">s</div> -->
+        </div>
+        <div class="content-left">
+            <p>{{p.text}}
+            </p>
+        </div>
+    </div>
+    {% endfor %}
+
+
+    
+
+      <div class="max-width-1 m-auto"><hr></div>
+
+
+    <div class="contact-content max-width-1 m-auto">
+        
+        {% for msg in messages %}
+        <span class="alert-msg">{{msg}}</span>
+        {% endfor %}
+        <h1>Comments</h1>
+        <form action="/blogpost/" method="post" class="contact-form">
+            {% csrf_token %}
+            <div class="form-box">
+                <input type="hidden" name="postid" value="{{Bpost.id}}">
+            </div>
+            <div class="form-box">
+                <textarea name="comment_msg" id="" cols="30" rows="10" placeholder="Message" required=""></textarea>
+            </div>
+            <div class="form-box">
+                <button type="submit" class="btn">Post Comment</button>
+            </div>
+        </div>
+    </form>
+
+    <div class="max-width-1 m-auto"><hr></div>
+    <div class="max-width-1 m-auto">
+    {% for comm in comm %}
+           <h3>{{comm.message}}</h3>
+           {% endfor %}
+        </div>
+        {% else %}
+        <h1 class="max-width-1 m-auto">Please Login</h1>
+    {% endif %}
+
+       
+
+
+
+
+
+
+
+
+{% comment %} 
+    <div class="max-width-1 m-auto">
+        <hr>
+    </div>
+    <div class="home-articles max-width-1 m-auto">
+        
+        <h2>People who read this also article</h2>
+        <div class="row">
+        {% for p in allpost %}
+       {% if forloop.counter < 4 %}
+        <div class="home-article more-post">
+            <div class="article-img">
+                <img src="{{p.image.url}}" alt="">
+            </div>
+            <div class="article-content">
+                <a href="{{p.slug}}">
+                    <h3>{{p.title}}</h3>
+                </a>
+                <div>{{p.text | truncatechars:30}}</div>
+                <span>{{p.date}}</span>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %} {% endcomment %}
+        
+        {% comment %} </div> {% endcomment %}
+
+
+{% endblock body %}

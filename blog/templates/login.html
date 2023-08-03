@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock title %}
+
+{% block body %}
+<div class="wrapper">
+    {% include "messages.html" %}
+        <div class="card">
+            <div class="bar"></div>
+            <span>Login in to Blog</span>
+            <h2 class="userEmail" id="userId"></h2>
+            <form action="/login" method="post">
+                {% csrf_token %}
+            <div class="inp-fields">
+                <input type="text" name="username" id="userEmail" placeholder="Username">
+
+            </div>
+            <div class="inp-fields">
+                <input type="password" name="password" id="pass" placeholder="Password" >
+            </div>
+            <div class="login">
+                <button class="loginBtn">Log in</button>
+            </div>
+            <div class="links">
+                <span>forgotten account?</span>
+                <span>Sign up for Blog</span>
+            </div>
+            </form>
+
+        </div>
+    </div>
+    
+{% endblock body %}
